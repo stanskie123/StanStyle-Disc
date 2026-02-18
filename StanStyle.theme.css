@@ -1,31 +1,56 @@
 /**
   * @name StanStyle
   * @author Stan
-  * @version 1.1.0
-  * @description A premium dark and gold aesthetic for Discord.
-  * @source https://github.com/Stan/StanStyle
+  * @version 1.2.0
+  * @description A premium Gold & Dark aesthetic for Discord.
+  * @source https://github.com/stanskie123/StanStyle-Disc
 */
 
-/* Main Theme Import */
+/* 1. Import the Main Theme Engine */
 @import url('https://devevil99.github.io/devevil/BetterDiscordAddons/Theme/Dark+/Dark+.theme.css');
 
 :root {
-  /* Backgrounds: Deep Charcoal & Onyx */
+  /* 2. Background Colors: Deep Charcoal & Onyx */
   --darkplus-bg: #121212;            
   --darkplus-bg2: #1e1e1e;           
   
-  /* Accent Colors: Metallic Gold */
+  /* 3. Accent Colors: Metallic Gold */
   --darkplus-sec: #d4af37;           /* Primary Gold Accent */
-  --darkplus-links: #f1e5ac;         /* Pale Gold for Links/Mentions */
+  --darkplus-links: #f1e5ac;         /* Pale Gold for Links */
   
-  /* Assets */
-  --darkplus-home-icon: url(https://i.imgur.com/your-gold-logo.png); 
+  /* 4. Custom Assets */
+  --darkplus-home-icon: url(https://i.imgur.com/RvlNQ7k.png); 
   
-  /* Gold Watermark Filter Settings */
+  /* 5. Gold Watermark Filter Settings */
   --watermark-filter-invert: 0%;
-  --watermark-filter-sepia: 100%;    /* Forced sepia for the base "yellow" */
-  --watermark-filter-saturate: 500%; /* High saturation for vibrancy */
-  --watermark-filter-hue-rotate: 10deg; /* Aligns sepia to true Gold */
+  --watermark-filter-sepia: 100%;    
+  --watermark-filter-saturate: 500%; 
+  --watermark-filter-hue-rotate: 10deg; 
   --watermark-filter-brightness: 90%;
   --watermark-filter-contrast: 120%;
+}
+
+/* 6. REMOVE THE "DARK+ BY DEV EVIL" WATERMARK */
+.wordmark_a934d8::after {
+    content: "STANSTYLE" !important; /* Replaces text with your name */
+    color: var(--darkplus-sec) !important;
+    font-size: 11px;
+    font-weight: 700;
+    position: absolute;
+    width: fit-content;
+    top: 7px;
+    left: 10px;
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: 1px;
+}
+
+/* Hide the default Discord Logo SVG in the top left corner */
+.wordmark_a934d8 svg {
+    display: none !important;
+}
+
+/* Ensure the container doesn't overlap other elements */
+.wordmark_a934d8 {
+    text-indent: 0 !important;
+    width: fit-content !important;
 }
