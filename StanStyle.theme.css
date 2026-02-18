@@ -1,20 +1,28 @@
 /**
-  * @name StanStyle Emerald Matrix
+  * @name StanStyle Emerald Matrix Final
   * @author Stan
-  * @version 8.0.0
+  * @version 10.0.0
 */
 
 @import url('https://devevil99.github.io/devevil/BetterDiscordAddons/Theme/Dark+/Dark+.theme.css');
 
-/* --- THE BACKGROUND GIF --- */
-#app-mount, 
-#app-mount .container_a2f514, 
-#app-mount .bg__960e4 {
-    background: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmR3dnY4YXFndTkzOXFxOTZqN3NreGl3bm1jZWU5Ymhma3ZsYXB5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IvOFcGZeDA76P6XryO/giphy.gif') center/cover no-repeat fixed !important;
+:root {
+  --darkplus-bg: transparent !important;
+  --darkplus-bg2: rgba(0, 0, 0, 0.3) !important; 
+  --darkplus-sec: #50c878;           /* Emerald Green */
+  --darkplus-links: #a7f3d0;         /* Soft Mint */
+  --matrix-gif: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmR3dnY4YXFndTkzOXFxOTZqN3NreGl3bm1jZWU5Ymhma3ZsYXB5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IvOFcGZeDA76P6XryO/giphy.gif');
 }
 
-/* --- THE TRANSPARENCY OVERRIDE --- */
-/* This kills the black panels seen in your screenshot */
+/* 1. THE BACKGROUND: Matrix GIF on all layers */
+#app-mount,
+.bg__960e4,
+.layer__960e4,
+.container_a2f514 {
+    background: var(--matrix-gif) center/cover no-repeat fixed !important;
+}
+
+/* 2. TRANSPARENCY: Making sure the GIF shows through the panels */
 .sidebar_e83166, 
 .chatContent_f75fb0, 
 .container_c8ffbb, 
@@ -23,12 +31,14 @@
 .container__2637a,
 .chat__ad572,
 .content_a7d72e,
-.base_a7d72e {
-    background: rgba(0, 0, 0, 0.4) !important; /* Semi-transparent black tint */
+.base_a7d72e,
+.standardSidebarView__23e6b {
+    background: rgba(0, 0, 0, 0.45) !important; /* Semi-transparent black tint */
     background-color: transparent !important;
+    backdrop-filter: blur(2px);
 }
 
-/* --- BRANDING --- */
+/* 3. BRANDING: "StanStyle lang malakas" */
 .title_c38106:after, 
 [class*="wordmark_"]::after,
 [class*="typeWindows_"]::after {
@@ -36,23 +46,44 @@
     position: absolute !important;
     left: 10px !important;
     top: 5px !important;
-    color: #50c878 !important;
+    color: var(--darkplus-sec) !important;
     font-size: 11px !important; 
     font-weight: 850 !important;
     text-shadow: 0 0 8px rgba(80, 200, 120, 0.8) !important;
     z-index: 9999 !important;
+    display: block !important;
 }
 [class*="wordmark_"] svg { display: none !important; }
 
-/* --- CAT KILLER --- */
-* { cursor: auto !important; }
-.bongo-cat, [class*="cursor-"], #cursor, .cursor-follower { display: none !important; }
-
-/* --- EMERALD ACCENTS --- */
-:root {
-    --darkplus-sec: #50c878;
-    --darkplus-links: #a7f3d0;
+/* 4. THE CAT CURSOR: Emerald Follower */
+/* This enables the cat image and tints it Emerald to match */
+.bongo-cat, 
+[class*="cursor-"], 
+#cursor, 
+.cursor-follower {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    filter: sepia(100%) saturate(300%) hue-rotate(90deg) !important; /* Makes the cat Green */
 }
-.unread__2ea32, .item__58105, .newMessagesBar__0f481, .unreadPill__908e2, .wrapper__00943 {
+
+/* 5. UI EMERALD ACCENTS */
+.unread__2ea32, 
+.item__58105, 
+.newMessagesBar__0f481, 
+.unreadPill__908e2, 
+.wrapper__00943 {
     background-color: var(--darkplus-sec) !important;
+}
+
+.membersGroup_c8ffbb, 
+.headerText__99e7c, 
+.title__9293f, 
+.name__91a9d {
+    color: var(--darkplus-sec) !important;
+}
+
+/* Hide Gifts/Nitro */
+button[aria-label="Send a gift"], [href="/store"] {
+    display: none !important;
 }
