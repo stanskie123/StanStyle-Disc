@@ -1,37 +1,54 @@
 /**
   * @name StanStyle Emerald Animated
   * @author Stan
-  * @version 4.0.0
+  * @version 5.0.0
 */
 
-/* 1. Import the Layout Engine */
 @import url('https://devevil99.github.io/devevil/BetterDiscordAddons/Theme/Dark+/Dark+.theme.css');
 
 :root {
-  /* Emerald Palette */
-  --darkplus-bg: rgba(11, 13, 12, 0.7); /* Made semi-transparent for the GIF */
-  --darkplus-bg2: rgba(18, 22, 20, 0.8);           
+  --darkplus-bg: transparent !important;
+  --darkplus-bg2: rgba(0, 0, 0, 0.2); 
   --darkplus-sec: #50c878;           
   --darkplus-links: #a7f3d0;         
-  --darkplus-home-icon: url(https://i.imgur.com/RvlNQ7k.png); 
 }
 
-/* 2. THE ANIMATED BACKGROUND */
+/* 1. THE GIF - RE-INJECTED */
 #app-mount {
     background: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmR3dnY4YXFndTkzOXFxOTZqN3NreGl3bm1jZWU5Ymhma3ZsYXB5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IvOFcGZeDA76P6XryO/giphy.gif') center/cover no-repeat !important;
 }
 
-/* Making Discord containers transparent to show the GIF */
-.bg__960e4, .app_bd26cc, .container_a2f514, .layer__960e4, .standardSidebarView__23e6b {
+/* 2. THE TRANSPARENCY FIX (REMOVING THE BLACK PANELS) */
+/* This targets every major container in your screenshot */
+#app-mount .app_bd26cc,
+#app-mount .bg__960e4,
+#app-mount .container_a2f514,
+#app-mount .layer_cd059d,
+#app-mount .standardSidebarView__23e6b,
+#app-mount .sidebar_e83166,      /* Channel List Area */
+#app-mount .content_a7d72e,      /* Main Chat Window */
+#app-mount .chatContent_f75fb0,  /* Message Area */
+#app-mount .container_c8ffbb,    /* Member List Area */
+#app-mount .members_c8ffbb,
+#app-mount .scroller__36d07,
+#app-mount .panels__71401 {      /* User Profile Panel */
     background: transparent !important;
+    background-color: transparent !important;
 }
 
-.chatContent_f75fb0, .sidebar_e83166, .wrapper_fea32, .container_c8ffbb {
-    background: rgba(0, 0, 0, 0.4) !important; /* Dark tint so text is readable */
-    backdrop-filter: blur(2px); /* Slight blur for a premium look */
+/* 3. READABILITY TINT */
+/* This adds a subtle "smoke" layer so you can still read text over the moving GIF */
+.chatContent_f75fb0::before,
+.sidebar_e83166::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.45) !important;
+    pointer-events: none;
+    z-index: -1;
 }
 
-/* 3. THE BRANDING: "StanStyle lang malakas" */
+/* 4. BRANDING: "StanStyle lang malakas" */
 .title_c38106:after, 
 [class*="wordmark_"]::after,
 [class*="typeWindows_"]::after {
@@ -43,26 +60,17 @@
     font-size: 11px !important; 
     font-weight: 850 !important;
     letter-spacing: 0.5px !important;
-    text-shadow: 0 0 8px rgba(80, 200, 120, 0.6) !important;
+    text-shadow: 0 0 8px rgba(80, 200, 120, 0.8) !important;
     z-index: 9999 !important;
 }
 
 [class*="wordmark_"] svg { display: none !important; }
 
-/* 4. THE CAT KILLER */
+/* 5. THE CAT KILLER */
 * { cursor: auto !important; }
-.bongo-cat, [class*="cursor-"], #cursor, .cursor-follower {
-    display: none !important;
-}
-a, button, [role="button"], .clickable_c8ffbb { cursor: pointer !important; }
+.bongo-cat, [class*="cursor-"], #cursor, .cursor-follower { display: none !important; }
 
-/* 5. UI EMERALD OVERRIDES */
+/* 6. EMERALD UI FIXES */
 .unread__2ea32, .item__58105, .newMessagesBar__0f481, .unreadPill__908e2, .wrapper__00943 {
     background-color: var(--darkplus-sec) !important;
 }
-
-.membersGroup_c8ffbb, .headerText__99e7c, .title__9293f, .name__91a9d, .colorHeaderPrimary-jN_yGr {
-    color: var(--darkplus-sec) !important;
-}
-
-button[aria-label="Send a gift"], [href="/store"] { display: none !important; }
