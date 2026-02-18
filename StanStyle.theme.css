@@ -1,54 +1,54 @@
 /**
-  * @name StanStyle Emerald Animated
+  * @name StanStyle Emerald Matrix
   * @author Stan
-  * @version 5.0.0
+  * @version 7.0.0
 */
 
 @import url('https://devevil99.github.io/devevil/BetterDiscordAddons/Theme/Dark+/Dark+.theme.css');
 
 :root {
-  --darkplus-bg: transparent !important;
-  --darkplus-bg2: rgba(0, 0, 0, 0.2); 
+  --matrix-gif: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmR3dnY4YXFndTkzOXFxOTZqN3NreGl3bm1jZWU5Ymhma3ZsYXB5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IvOFcGZeDA76P6XryO/giphy.gif');
   --darkplus-sec: #50c878;           
   --darkplus-links: #a7f3d0;         
 }
 
-/* 1. THE GIF - RE-INJECTED */
-#app-mount {
-    background: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmR3dnY4YXFndTkzOXFxOTZqN3NreGl3bm1jZWU5Ymhma3ZsYXB5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IvOFcGZeDA76P6XryO/giphy.gif') center/cover no-repeat !important;
-}
-
-/* 2. THE TRANSPARENCY FIX (REMOVING THE BLACK PANELS) */
-/* This targets every major container in your screenshot */
-#app-mount .app_bd26cc,
-#app-mount .bg__960e4,
-#app-mount .container_a2f514,
-#app-mount .layer_cd059d,
-#app-mount .standardSidebarView__23e6b,
-#app-mount .sidebar_e83166,      /* Channel List Area */
-#app-mount .content_a7d72e,      /* Main Chat Window */
-#app-mount .chatContent_f75fb0,  /* Message Area */
-#app-mount .container_c8ffbb,    /* Member List Area */
-#app-mount .members_c8ffbb,
-#app-mount .scroller__36d07,
-#app-mount .panels__71401 {      /* User Profile Panel */
-    background: transparent !important;
+/* 1. FORCE GIF ONTO EVERY MAIN PANEL */
+#app-mount,
+.bg__960e4,
+.chatContent_f75fb0,
+.sidebar_e83166,
+.container_c8ffbb,
+.members_c8ffbb,
+.privateChannels__31232,
+.container__2637a,
+.panels__71401 {
+    background-image: var(--matrix-gif) !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
     background-color: transparent !important;
 }
 
-/* 3. READABILITY TINT */
-/* This adds a subtle "smoke" layer so you can still read text over the moving GIF */
+/* 2. THE DARK OVERLAY (Readability) */
+/* This makes the GIF look dark so you can actually read the messages */
 .chatContent_f75fb0::before,
-.sidebar_e83166::before {
+.sidebar_e83166::before,
+.members_c8ffbb::before {
     content: "";
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.45) !important;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.55) !important; /* Adjust this to make it darker/lighter */
     pointer-events: none;
-    z-index: -1;
+    z-index: 0;
 }
 
-/* 4. BRANDING: "StanStyle lang malakas" */
+/* Ensure text stays on top of the overlay */
+.chatContent_f75fb0 > *, .sidebar_e83166 > *, .members_c8ffbb > * {
+    z-index: 1;
+    position: relative;
+}
+
+/* 3. BRANDING: "StanStyle lang malakas" */
 .title_c38106:after, 
 [class*="wordmark_"]::after,
 [class*="typeWindows_"]::after {
@@ -59,18 +59,17 @@
     color: var(--darkplus-sec) !important;
     font-size: 11px !important; 
     font-weight: 850 !important;
-    letter-spacing: 0.5px !important;
     text-shadow: 0 0 8px rgba(80, 200, 120, 0.8) !important;
     z-index: 9999 !important;
 }
 
 [class*="wordmark_"] svg { display: none !important; }
 
-/* 5. THE CAT KILLER */
+/* 4. THE CAT KILLER */
 * { cursor: auto !important; }
 .bongo-cat, [class*="cursor-"], #cursor, .cursor-follower { display: none !important; }
 
-/* 6. EMERALD UI FIXES */
+/* 5. UI EMERALD OVERRIDES */
 .unread__2ea32, .item__58105, .newMessagesBar__0f481, .unreadPill__908e2, .wrapper__00943 {
     background-color: var(--darkplus-sec) !important;
 }
