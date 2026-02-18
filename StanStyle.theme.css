@@ -1,12 +1,12 @@
 /**
   * @name StanStyle
   * @author Stan
-  * @version 1.7.0
-  * @description Premium Gold & Dark aesthetic. Forcefully removes all previous branding.
+  * @version 1.8.0
+  * @description Premium Gold & Dark aesthetic. 
   * @source https://github.com/stanskie123/StanStyle-Disc
 */
 
-/* 1. Core Engine */
+/* 1. Import the original layout */
 @import url('https://devevil99.github.io/devevil/BetterDiscordAddons/Theme/Dark+/Dark+.theme.css');
 
 :root {
@@ -25,44 +25,35 @@
   --watermark-filter-contrast: 120%;
 }
 
-/* 2. THE KILLSWITCH - Removes ALL "Dark+" branding */
+/* 2. THE ULTIMATE OVERRIDE - Kills "Dark+ By Dev Evil" */
 
-/* Targets the specific ID in the code you sent */
-.title_c38106::after, 
-.title_c38106::before,
-.typeWindows__421ed::after,
-.typeWindows__421ed::before {
-    content: none !important;
-    display: none !important;
+/* Target the specific ID and Class from the original theme's source */
+.title_c38106::after,
+.wordmark_a30677::after,
+[class*="wordmark_"]::after,
+.typeWindows_a934d8::after {
+    content: "" !important; /* Forces the text to be empty */
+    display: none !important; /* Hides the container */
+    width: 0 !important;
+    height: 0 !important;
+    visibility: hidden !important;
 }
 
-/* Targets the Window Wordmark (top left) */
-[class*="wordmark_"]::after {
+/* 3. INJECT YOUR BRANDING - Put "STANSTYLE" in its place */
+[class*="wordmark_"]::before {
     content: "STANSTYLE" !important;
-    display: flex !important;
-    visibility: visible !important;
     position: absolute !important;
-    top: 5px !important;
-    left: 10px !important;
+    top: 7px !important;
+    left: 12px !important;
     color: var(--darkplus-sec) !important;
     font-size: 12px !important;
     font-weight: 800 !important;
-    letter-spacing: 1px !important;
-    z-index: 9999 !important;
+    letter-spacing: 1.5px !important;
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    text-transform: uppercase !important;
 }
 
-/* Hides the original SVG logo */
+/* Hide the original Discord Logo */
 [class*="wordmark_"] svg {
-    display: none !important;
-}
-
-/* Hides the custom text string that the original theme forces in */
-[class*="wordmark_"] {
-    font-size: 0 !important;
-    color: transparent !important;
-}
-
-/* 3. Cleanup */
-[href="/store"], [aria-label="Send a gift"] {
     display: none !important;
 }
