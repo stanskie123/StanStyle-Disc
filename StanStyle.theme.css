@@ -1,27 +1,22 @@
 /**
   * @name StanStyle
   * @author Stan
-  * @version 1.5.0
-  * @description Premium Gold & Dark aesthetic for Discord.
+  * @version 1.6.0
+  * @description Premium Gold & Dark aesthetic. Forcefully removes all previous branding.
   * @source https://github.com/stanskie123/StanStyle-Disc
 */
 
-/* 1. KEEP THIS ACTIVE - This is the "Engine" */
+/* 1. The Core Engine */
 @import url('https://devevil99.github.io/devevil/BetterDiscordAddons/Theme/Dark+/Dark+.theme.css');
 
 :root {
-  /* 2. Background Colors */
   --darkplus-bg: #121212;            
   --darkplus-bg2: #1e1e1e;           
-  
-  /* 3. Accent Colors: Metallic Gold */
   --darkplus-sec: #d4af37;           
   --darkplus-links: #f1e5ac;         
-  
-  /* 4. Custom Home Icon */
   --darkplus-home-icon: url(https://i.imgur.com/RvlNQ7k.png); 
   
-  /* 5. Gold Watermark Filter Settings */
+  /* Gold Watermark Filter */
   --watermark-filter-invert: 0%;
   --watermark-filter-sepia: 100%;    
   --watermark-filter-saturate: 500%; 
@@ -30,30 +25,35 @@
   --watermark-filter-contrast: 120%;
 }
 
-/* 6. BRANDING OVERRIDE - This removes the old name and adds yours */
+/* 2. THE ABSOLUTE REMOVAL OF "DARK+ BY DEV EVIL" */
 
-/* Hides the original "Dark+ By Dev Evil" text and the logo */
-[class*="wordmark_"] > svg,
-[class*="wordmark_"]::after {
+/* This targets the specific title container from the original theme */
+.title_c38106:after {
+    content: none !important;
     display: none !important;
+    visibility: hidden !important;
 }
 
-/* Adds "STANSTYLE" in Gold where the old logo used to be */
-[class*="wordmark_"]::before {
+/* This targets the Window Wordmark area where the text hides */
+[class*="wordmark_"]::after {
     content: "STANSTYLE" !important;
-    color: var(--darkplus-sec) !important;
-    font-size: 12px !important;
-    font-weight: 800 !important;
-    letter-spacing: 1.2px !important;
+    display: block !important;
+    visibility: visible !important;
     position: absolute !important;
     top: 6px !important;
     left: 10px !important;
-    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-    visibility: visible !important;
+    color: var(--darkplus-sec) !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    letter-spacing: 1px !important;
 }
 
-/* 7. EXTRA POLISH */
-/* Hides the Shop/Nitro button to keep the focus on your gold theme */
-[href="/store"] {
+/* Hide the original Discord SVG logo */
+[class*="wordmark_"] svg {
+    display: none !important;
+}
+
+/* 3. Sidebar Cleanup */
+[href="/store"], [aria-label="Send a gift"] {
     display: none !important;
 }
