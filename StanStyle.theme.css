@@ -1,9 +1,11 @@
 /**
   * @name StanStyle
   * @author Stan
-  * @version 2.0.0
+  * @version 2.1.0
+  * @description Premium Gold & Dark aesthetic.
 */
 
+/* 1. Core Engine */
 @import url('https://devevil99.github.io/devevil/BetterDiscordAddons/Theme/Dark+/Dark+.theme.css');
 
 :root {
@@ -12,41 +14,36 @@
   --darkplus-sec: #d4af37;           
   --darkplus-links: #f1e5ac;         
   --darkplus-home-icon: url(https://i.imgur.com/RvlNQ7k.png); 
+  
+  /* THIS OVERWRITES THE ORIGINAL WATERMARK VARIABLE */
+  --dplus-wordmark: "STANSTYLE";
 }
 
-/* 1. HIDE EVERYTHING OLD */
-[class*="wordmark_"] svg,
+/* 2. THE ULTIMATE WATERMARK KILLER */
+
+/* This specifically targets the "Dark+ By Dev Evil" text used in the original source */
 [class*="wordmark_"]::after,
-.title_c38106::after {
-    display: none !important;
-    content: "" !important;
-}
-
-/* 2. NEW STANSTYLE POSITIONING */
-/* This attaches the name to the actual Window Bar container */
-[class*="typeWindows_"]::before {
-    content: "STANSTYLE" !important;
-    position: absolute !important;
-    left: 12px !important;
-    top: 8px !important;
-    
-    /* Look & Feel */
-    color: #d4af37 !important; /* Solid Gold */
+.title_c38106::after,
+.typeWindows_a934d8::after {
+    content: "STANSTYLE" !important; /* Force your name here */
+    display: block !important;
+    visibility: visible !important;
+    color: var(--darkplus-sec) !important;
     font-size: 12px !important;
     font-weight: 850 !important;
     letter-spacing: 2px !important;
-    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
     text-transform: uppercase !important;
-    
-    /* Make it click-through and high priority */
-    pointer-events: none !important;
-    z-index: 9999 !important;
-    opacity: 1 !important;
-    visibility: visible !important;
+    position: absolute !important;
+    top: 8px !important;
+    left: 12px !important;
 }
 
-/* 3. FIX FOR RECENT DISCORD UPDATES */
-/* Ensures the container is large enough to show the text */
-[class*="typeWindows_"] {
-    height: 28px !important;
+/* This hides the actual text string "Dark+ By Dev Evil" if it's injected as raw text */
+[class*="wordmark_"] {
+    font-size: 0 !important;
+}
+
+/* This hides the original SVG logo so it doesn't overlap your name */
+[class*="wordmark_"] svg {
+    display: none !important;
 }
