@@ -1,8 +1,8 @@
 /**
   * @name StanStyle
   * @author Stan
-  * @version 1.2.0
-  * @description A premium Gold & Dark aesthetic for Discord.
+  * @version 1.3.0
+  * @description Premium Gold & Dark aesthetic for Discord.
   * @source https://github.com/stanskie123/StanStyle-Disc
 */
 
@@ -10,13 +10,13 @@
 @import url('https://devevil99.github.io/devevil/BetterDiscordAddons/Theme/Dark+/Dark+.theme.css');
 
 :root {
-  /* 2. Background Colors: Deep Charcoal & Onyx */
+  /* 2. Background Colors */
   --darkplus-bg: #121212;            
   --darkplus-bg2: #1e1e1e;           
   
-  /* 3. Accent Colors: Metallic Gold */
-  --darkplus-sec: #d4af37;           /* Primary Gold Accent */
-  --darkplus-links: #f1e5ac;         /* Pale Gold for Links */
+  /* 3. Accent Colors: Gold */
+  --darkplus-sec: #d4af37;           
+  --darkplus-links: #f1e5ac;         
   
   /* 4. Custom Assets */
   --darkplus-home-icon: url(https://i.imgur.com/RvlNQ7k.png); 
@@ -30,27 +30,30 @@
   --watermark-filter-contrast: 120%;
 }
 
-/* 6. REMOVE THE "DARK+ BY DEV EVIL" WATERMARK */
-.wordmark_a934d8::after {
-    content: "STANSTYLE" !important; /* Replaces text with your name */
+/* 6. THE NUCLEAR FIX FOR THE WATERMARK */
+/* This hides the original text absolutely */
+[class*="wordmark_"]::after {
+    content: "STANSTYLE" !important;
+    display: flex !important;
+    visibility: visible !important;
+    position: absolute !important;
+    top: 5px !important;
+    left: 10px !important;
     color: var(--darkplus-sec) !important;
-    font-size: 11px;
-    font-weight: 700;
-    position: absolute;
-    width: fit-content;
-    top: 7px;
-    left: 10px;
-    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    letter-spacing: 1px;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    letter-spacing: 1px !important;
+    z-index: 9999 !important;
+    background: none !important;
 }
 
-/* Hide the default Discord Logo SVG in the top left corner */
-.wordmark_a934d8 svg {
+/* This hides the original "Dark+" logo and text layer */
+[class*="wordmark_"] > svg {
     display: none !important;
 }
 
-/* Ensure the container doesn't overlap other elements */
-.wordmark_a934d8 {
-    text-indent: 0 !important;
-    width: fit-content !important;
+/* Final wipe for any leftover text strings */
+[class*="wordmark_"] {
+    font-size: 0 !important;
+    color: transparent !important;
 }
