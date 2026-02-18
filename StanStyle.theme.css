@@ -1,28 +1,29 @@
 /**
   * @name StanStyle Emerald Matrix Final
   * @author Stan
-  * @version 10.0.0
+  * @version 12.0.0
 */
 
+/* 1. IMPORT BASE THEME */
 @import url('https://devevil99.github.io/devevil/BetterDiscordAddons/Theme/Dark+/Dark+.theme.css');
 
 :root {
-  --darkplus-bg: transparent !important;
-  --darkplus-bg2: rgba(0, 0, 0, 0.3) !important; 
   --darkplus-sec: #50c878;           /* Emerald Green */
   --darkplus-links: #a7f3d0;         /* Soft Mint */
   --matrix-gif: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmR3dnY4YXFndTkzOXFxOTZqN3NreGl3bm1jZWU5Ymhma3ZsYXB5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IvOFcGZeDA76P6XryO/giphy.gif');
 }
 
-/* 1. THE BACKGROUND: Matrix GIF on all layers */
+/* 2. BACKGROUND INJECTION (Forces GIF on all layers) */
 #app-mount,
 .bg__960e4,
 .layer__960e4,
-.container_a2f514 {
+.container_a2f514,
+.app_bd26cc {
     background: var(--matrix-gif) center/cover no-repeat fixed !important;
 }
 
-/* 2. TRANSPARENCY: Making sure the GIF shows through the panels */
+/* 3. TRANSPARENCY FIX (Makes the 'Black Walls' disappear) */
+/* We target every major container to ensure the GIF stays visible after loading */
 .sidebar_e83166, 
 .chatContent_f75fb0, 
 .container_c8ffbb, 
@@ -32,13 +33,15 @@
 .chat__ad572,
 .content_a7d72e,
 .base_a7d72e,
-.standardSidebarView__23e6b {
-    background: rgba(0, 0, 0, 0.45) !important; /* Semi-transparent black tint */
+.standardSidebarView__23e6b,
+.scroller__36d07,
+.privateChannels__31232 {
+    background: rgba(0, 0, 0, 0.45) !important; /* Semi-transparent tint for readability */
     background-color: transparent !important;
     backdrop-filter: blur(2px);
 }
 
-/* 3. BRANDING: "StanStyle lang malakas" */
+/* 4. BRANDING: "StanStyle lang malakas" */
 .title_c38106:after, 
 [class*="wordmark_"]::after,
 [class*="typeWindows_"]::after {
@@ -52,11 +55,12 @@
     text-shadow: 0 0 8px rgba(80, 200, 120, 0.8) !important;
     z-index: 9999 !important;
     display: block !important;
+    visibility: visible !important;
 }
+/* Hide original Discord logo */
 [class*="wordmark_"] svg { display: none !important; }
 
-/* 4. THE CAT CURSOR: Emerald Follower */
-/* This enables the cat image and tints it Emerald to match */
+/* 5. THE CAT CURSOR (Emerald Follower) */
 .bongo-cat, 
 [class*="cursor-"], 
 #cursor, 
@@ -64,10 +68,11 @@
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
-    filter: sepia(100%) saturate(300%) hue-rotate(90deg) !important; /* Makes the cat Green */
+    /* This filter makes the cat Emerald Green to match the theme */
+    filter: sepia(100%) saturate(300%) hue-rotate(90deg) !important;
 }
 
-/* 5. UI EMERALD ACCENTS */
+/* 6. EMERALD UI ACCENTS */
 .unread__2ea32, 
 .item__58105, 
 .newMessagesBar__0f481, 
@@ -83,7 +88,7 @@
     color: var(--darkplus-sec) !important;
 }
 
-/* Hide Gifts/Nitro */
+/* 7. CLEANUP: Hide Nitro/Gift button */
 button[aria-label="Send a gift"], [href="/store"] {
     display: none !important;
 }
