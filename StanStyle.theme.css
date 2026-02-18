@@ -1,12 +1,9 @@
 /**
   * @name StanStyle
   * @author Stan
-  * @version 1.8.0
-  * @description Premium Gold & Dark aesthetic. 
-  * @source https://github.com/stanskie123/StanStyle-Disc
+  * @version 1.9.0
 */
 
-/* 1. Import the original layout */
 @import url('https://devevil99.github.io/devevil/BetterDiscordAddons/Theme/Dark+/Dark+.theme.css');
 
 :root {
@@ -16,7 +13,6 @@
   --darkplus-links: #f1e5ac;         
   --darkplus-home-icon: url(https://i.imgur.com/RvlNQ7k.png); 
   
-  /* Gold Watermark Filter */
   --watermark-filter-invert: 0%;
   --watermark-filter-sepia: 100%;    
   --watermark-filter-saturate: 500%; 
@@ -25,35 +21,36 @@
   --watermark-filter-contrast: 120%;
 }
 
-/* 2. THE ULTIMATE OVERRIDE - Kills "Dark+ By Dev Evil" */
-
-/* Target the specific ID and Class from the original theme's source */
-.title_c38106::after,
-.wordmark_a30677::after,
-[class*="wordmark_"]::after,
-.typeWindows_a934d8::after {
-    content: "" !important; /* Forces the text to be empty */
-    display: none !important; /* Hides the container */
-    width: 0 !important;
-    height: 0 !important;
-    visibility: hidden !important;
+/* 1. KEEP THE OLD WATERMARK DEAD */
+.title_c38106::after, 
+[class*="wordmark_"]::after {
+    content: "" !important;
+    display: none !important;
 }
 
-/* 3. INJECT YOUR BRANDING - Put "STANSTYLE" in its place */
+/* 2. FORCE "STANSTYLE" TO APPEAR */
 [class*="wordmark_"]::before {
     content: "STANSTYLE" !important;
+    display: block !important;
+    visibility: visible !important;
+    
+    /* Position */
     position: absolute !important;
     top: 7px !important;
-    left: 12px !important;
+    left: 10px !important;
+    z-index: 999 !important;
+    
+    /* Style */
     color: var(--darkplus-sec) !important;
-    font-size: 12px !important;
-    font-weight: 800 !important;
-    letter-spacing: 1.5px !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+    letter-spacing: 2px !important;
     font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
     text-transform: uppercase !important;
+    opacity: 1 !important;
 }
 
-/* Hide the original Discord Logo */
+/* 3. HIDE DISCORD LOGO */
 [class*="wordmark_"] svg {
     display: none !important;
 }
