@@ -1,8 +1,7 @@
 /**
-  * @name StanStyle Emerald
+  * @name StanStyle Emerald Animated
   * @author Stan
-  * @version 3.2.0
-  * @description Premium Emerald Green aesthetic with custom Malakas branding.
+  * @version 4.0.0
 */
 
 /* 1. Import the Layout Engine */
@@ -10,35 +9,29 @@
 
 :root {
   /* Emerald Palette */
-  --darkplus-bg: #0b0d0c;            
-  --darkplus-bg2: #121614;           
-  --darkplus-sec: #50c878;           /* Emerald Green */
-  --darkplus-links: #a7f3d0;         /* Soft Mint */
+  --darkplus-bg: rgba(11, 13, 12, 0.7); /* Made semi-transparent for the GIF */
+  --darkplus-bg2: rgba(18, 22, 20, 0.8);           
+  --darkplus-sec: #50c878;           
+  --darkplus-links: #a7f3d0;         
   --darkplus-home-icon: url(https://i.imgur.com/RvlNQ7k.png); 
-  
-  /* Filter settings for the accent color */
-  --watermark-filter-invert: 0%;
-  --watermark-filter-sepia: 20%;
-  --watermark-filter-saturate: 1000%;
-  --watermark-filter-hue-rotate: 110deg; 
-  --watermark-filter-brightness: 100%;
-  --watermark-filter-contrast: 110%;
-}
-/* --- CUSTOM BACKGROUND --- */
-#app-mount {
-    background: url('https://imgur.com/a/F1JKJoq') center/cover no-repeat !important;
 }
 
-/* This makes the rest of Discord transparent so you can see the image */
-.bg__960e4, 
-.container_a2f514, 
-.layer__960e4, 
-.standardSidebarView__23e6b,
-.app_bd26cc {
-    background: rgba(0, 0, 0, 0.7) !important; /* Adjust 0.7 to make it darker or lighter */
-    backdrop-filter: blur(5px); /* This adds a nice frosted glass effect */
+/* 2. THE ANIMATED BACKGROUND */
+#app-mount {
+    background: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmR3dnY4YXFndTkzOXFxOTZqN3NreGl3bm1jZWU5Ymhma3ZsYXB5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IvOFcGZeDA76P6XryO/giphy.gif') center/cover no-repeat !important;
 }
-/* 2. THE BRANDING: "StanStyle lang malakas" */
+
+/* Making Discord containers transparent to show the GIF */
+.bg__960e4, .app_bd26cc, .container_a2f514, .layer__960e4, .standardSidebarView__23e6b {
+    background: transparent !important;
+}
+
+.chatContent_f75fb0, .sidebar_e83166, .wrapper_fea32, .container_c8ffbb {
+    background: rgba(0, 0, 0, 0.4) !important; /* Dark tint so text is readable */
+    backdrop-filter: blur(2px); /* Slight blur for a premium look */
+}
+
+/* 3. THE BRANDING: "StanStyle lang malakas" */
 .title_c38106:after, 
 [class*="wordmark_"]::after,
 [class*="typeWindows_"]::after {
@@ -47,87 +40,29 @@
     left: 10px !important;
     top: 5px !important;
     color: var(--darkplus-sec) !important;
-    
-    /* Font Styling */
     font-size: 11px !important; 
     font-weight: 850 !important;
     letter-spacing: 0.5px !important;
-    text-transform: none !important;
-    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-    
-    /* Glow & Visibility */
-    text-shadow: 0 0 8px rgba(80, 200, 120, 0.4) !important;
-    filter: none !important;
-    visibility: visible !important;
-    display: block !important;
+    text-shadow: 0 0 8px rgba(80, 200, 120, 0.6) !important;
     z-index: 9999 !important;
-    white-space: nowrap !important;
 }
 
-/* Hide the original Discord logo */
-[class*="wordmark_"] svg {
+[class*="wordmark_"] svg { display: none !important; }
+
+/* 4. THE CAT KILLER */
+* { cursor: auto !important; }
+.bongo-cat, [class*="cursor-"], #cursor, .cursor-follower {
     display: none !important;
 }
+a, button, [role="button"], .clickable_c8ffbb { cursor: pointer !important; }
 
-/* 3. THE CAT KILLER (Anti-Cursor Follower) */
-* {
-    cursor: auto !important;
-}
-
-/* Targets all common cursor-following cat elements from the base theme */
-.bongo-cat, 
-[class*="cursor-"], 
-#cursor,
-.cursor-follower,
-[style*="cursor: url"] {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-}
-
-/* Restore standard pointer for interactive items */
-a, button, [role="button"], .clickable_c8ffbb, .wrapper_d4fa29 {
-    cursor: pointer !important;
-}
-
-/* 4. EMERALD UI OVERRIDES */
-
-/* Backgrounds */
-.bg__960e4, .container_a2f514, .scrollerInner__36d07, .container__9293f.themed__9293f, 
-.content-2a4AW9, .searchBar_e6b769, .scroller__36d07, .peopleList__5ec2f, 
-.container__7d20c, .header_f37cb1, .stageSection-3mAD8V, .scroller__4a84a, 
-.header_adb41f, .scroller_fb04e1, .friendsEmpty_c7ea19, .container_e131a9,
-.chatContent_f75fb0, .sidebarRegionScroller__23e6b {
-    background-color: var(--darkplus-bg) !important;
-}
-
-.searchBarComponent__35e86, .channelTextArea_f75fb0 .scrollableContainer__74017, 
-.grid__623de, .background__1fed1, .feature-2IUcBI, .infoScroller-1QMpon, 
-.input_ac6cb0, .input-2g-os5, .categoryItem-1QIroW.selectedCategoryItem-FHKU_o .itemInner-gPkiWb {
-    background-color: var(--darkplus-bg2) !important;
-}
-
-/* Accent Color Elements (Unread, Pills, Buttons) */
-.unread__2ea32, .item__58105, .newMessagesBar__0f481, .unreadPill__908e2,
-.wrapper__00943, .item__133bf[aria-label="Add Friend"], .button-Jt-tIg, 
-.jumpToPresentBar__0f481 {
+/* 5. UI EMERALD OVERRIDES */
+.unread__2ea32, .item__58105, .newMessagesBar__0f481, .unreadPill__908e2, .wrapper__00943 {
     background-color: var(--darkplus-sec) !important;
 }
 
-/* Text & Headers */
-.membersGroup_c8ffbb, .headerText__99e7c, .title__9293f, .name__91a9d, 
-.children__91a9d, .headerCellContent__5fe04, .nameCellText_adb41f, 
-.colorHeaderPrimary-jN_yGr, .activityHeader-2shpl0, .label-2gNW3x {
+.membersGroup_c8ffbb, .headerText__99e7c, .title__9293f, .name__91a9d, .colorHeaderPrimary-jN_yGr {
     color: var(--darkplus-sec) !important;
 }
 
-/* Hide Gifts/Nitro button */
-button[aria-label="Send a gift"], [href="/store"] {
-    display: none !important;
-}
-
-/* Divider fix */
-#app-mount .divider__908e2.isUnread__908e2 {
-    border-top: 1px solid var(--darkplus-sec);
-}
+button[aria-label="Send a gift"], [href="/store"] { display: none !important; }
