@@ -11,19 +11,24 @@
 /* --- ALL YOUR CUSTOM STYLES --- */
 
 :root {
-  --darkplus-bg: #212121;
-  --darkplus-bg2: #302f2f;
-  --darkplus-sec: #bb86fc; /* Your Purple Accent */
-  --darkplus-links: #cdaef3;
-  --darkplus-home-icon: url(https://i.imgur.com/RvlNQ7k.png);
+  /* Deep Charcoal/Black Backgrounds */
+  --darkplus-bg: #0b0d0c;            
+  --darkplus-bg2: #121614;           
   
-  /* Filter settings for your branding */
+  /* Emerald Accents */
+  --darkplus-sec: #50c878;           /* Emerald Green */
+  --darkplus-links: #a7f3d0;         /* Soft Mint for links/hover */
+  
+  /* Emerald Home Icon */
+  --darkplus-home-icon: url(https://i.imgur.com/RvlNQ7k.png); 
+  
+  /* Filter settings adjusted for Green Glow */
   --watermark-filter-invert: 0%;
-  --watermark-filter-sepia: 50%;
-  --watermark-filter-saturate: 3000%;
-  --watermark-filter-hue-rotate: 210deg;
-  --watermark-filter-brightness: 70%;
-  --watermark-filter-contrast: 200%;
+  --watermark-filter-sepia: 20%;
+  --watermark-filter-saturate: 1000%;
+  --watermark-filter-hue-rotate: 110deg; 
+  --watermark-filter-brightness: 100%;
+  --watermark-filter-contrast: 110%;
 }
 
 /* Background & Containers */
