@@ -1,0 +1,31 @@
+/**
+  * @name StanStyle
+  * @author Stan
+  * @version 1.1.0
+  * @description A premium dark and gold aesthetic for Discord.
+  * @source https://github.com/Stan/StanStyle
+*/
+
+/* Main Theme Import */
+@import url('https://devevil99.github.io/devevil/BetterDiscordAddons/Theme/Dark+/Dark+.theme.css');
+
+:root {
+  /* Backgrounds: Deep Charcoal & Onyx */
+  --darkplus-bg: #121212;            
+  --darkplus-bg2: #1e1e1e;           
+  
+  /* Accent Colors: Metallic Gold */
+  --darkplus-sec: #d4af37;           /* Primary Gold Accent */
+  --darkplus-links: #f1e5ac;         /* Pale Gold for Links/Mentions */
+  
+  /* Assets */
+  --darkplus-home-icon: url(https://i.imgur.com/your-gold-logo.png); 
+  
+  /* Gold Watermark Filter Settings */
+  --watermark-filter-invert: 0%;
+  --watermark-filter-sepia: 100%;    /* Forced sepia for the base "yellow" */
+  --watermark-filter-saturate: 500%; /* High saturation for vibrancy */
+  --watermark-filter-hue-rotate: 10deg; /* Aligns sepia to true Gold */
+  --watermark-filter-brightness: 90%;
+  --watermark-filter-contrast: 120%;
+}
