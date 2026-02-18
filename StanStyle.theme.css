@@ -1,7 +1,7 @@
 /**
   * @name StanStyle
   * @author Stan
-  * @version 1.9.0
+  * @version 2.0.0
 */
 
 @import url('https://devevil99.github.io/devevil/BetterDiscordAddons/Theme/Dark+/Dark+.theme.css');
@@ -12,45 +12,41 @@
   --darkplus-sec: #d4af37;           
   --darkplus-links: #f1e5ac;         
   --darkplus-home-icon: url(https://i.imgur.com/RvlNQ7k.png); 
-  
-  --watermark-filter-invert: 0%;
-  --watermark-filter-sepia: 100%;    
-  --watermark-filter-saturate: 500%; 
-  --watermark-filter-hue-rotate: 10deg; 
-  --watermark-filter-brightness: 90%;
-  --watermark-filter-contrast: 120%;
 }
 
-/* 1. KEEP THE OLD WATERMARK DEAD */
-.title_c38106::after, 
-[class*="wordmark_"]::after {
-    content: "" !important;
+/* 1. HIDE EVERYTHING OLD */
+[class*="wordmark_"] svg,
+[class*="wordmark_"]::after,
+.title_c38106::after {
     display: none !important;
+    content: "" !important;
 }
 
-/* 2. FORCE "STANSTYLE" TO APPEAR */
-[class*="wordmark_"]::before {
+/* 2. NEW STANSTYLE POSITIONING */
+/* This attaches the name to the actual Window Bar container */
+[class*="typeWindows_"]::before {
     content: "STANSTYLE" !important;
-    display: block !important;
-    visibility: visible !important;
-    
-    /* Position */
     position: absolute !important;
-    top: 7px !important;
-    left: 10px !important;
-    z-index: 999 !important;
+    left: 12px !important;
+    top: 8px !important;
     
-    /* Style */
-    color: var(--darkplus-sec) !important;
-    font-size: 13px !important;
-    font-weight: 900 !important;
+    /* Look & Feel */
+    color: #d4af37 !important; /* Solid Gold */
+    font-size: 12px !important;
+    font-weight: 850 !important;
     letter-spacing: 2px !important;
     font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
     text-transform: uppercase !important;
+    
+    /* Make it click-through and high priority */
+    pointer-events: none !important;
+    z-index: 9999 !important;
     opacity: 1 !important;
+    visibility: visible !important;
 }
 
-/* 3. HIDE DISCORD LOGO */
-[class*="wordmark_"] svg {
-    display: none !important;
+/* 3. FIX FOR RECENT DISCORD UPDATES */
+/* Ensures the container is large enough to show the text */
+[class*="typeWindows_"] {
+    height: 28px !important;
 }
