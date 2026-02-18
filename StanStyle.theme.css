@@ -24,7 +24,20 @@
   --watermark-filter-brightness: 100%;
   --watermark-filter-contrast: 110%;
 }
+/* --- CUSTOM BACKGROUND --- */
+#app-mount {
+    background: url('https://imgur.com/a/F1JKJoq') center/cover no-repeat !important;
+}
 
+/* This makes the rest of Discord transparent so you can see the image */
+.bg__960e4, 
+.container_a2f514, 
+.layer__960e4, 
+.standardSidebarView__23e6b,
+.app_bd26cc {
+    background: rgba(0, 0, 0, 0.7) !important; /* Adjust 0.7 to make it darker or lighter */
+    backdrop-filter: blur(5px); /* This adds a nice frosted glass effect */
+}
 /* 2. THE BRANDING: "StanStyle lang malakas" */
 .title_c38106:after, 
 [class*="wordmark_"]::after,
