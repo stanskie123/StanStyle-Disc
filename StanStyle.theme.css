@@ -64,7 +64,7 @@
 /* 1. Remove the original "Dark+ by Dev Evil" */
 .title_c38106:after, 
 [class*="wordmark_"]::after {
-    content: "STANSTYLE" !important; /* Forces your name in */
+    content: "StanStyle lang malakas" !important; /* Forces your name in */
     position: absolute !important;
     left: 10px !important;
     top: 5px !important;
