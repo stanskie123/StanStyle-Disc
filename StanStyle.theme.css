@@ -1,51 +1,61 @@
 /**
-  * @name StanStyle Minimal Branding
+  * @name StanStyle Philippines Flag Edition
   * @author Stan
-  * @version 25.0.0
+  * @version 26.0.0
 */
 
-/* 1. RESET ALL THEME OVERRIDES */
+:root {
+  /* The Colors of the Flag */
+  --ph-blue: #0038a8;
+  --ph-red: #ce1126;
+  --ph-yellow: #fcd116;
+  --ph-white: #ffffff;
+}
+
+/* 1. THE FLAG GRADIENT BACKGROUND */
 #app-mount, .bg__960e4, .layer__960e4, .app_bd26cc {
-    background: transparent !important;
+    background: linear-gradient(135deg, var(--ph-blue) 0%, var(--ph-blue) 45%, var(--ph-white) 48%, var(--ph-white) 52%, var(--ph-red) 55%, var(--ph-red) 100%) !important;
+    background-attachment: fixed !important;
 }
 
-/* Kill all filters, GIFs, and background layers */
-#app-mount::after, #app-mount::before {
-    display: none !important;
+/* 2. TRANSPARENCY (Glass Look) */
+.sidebar_e83166, .chatContent_f75fb0, .container_c8ffbb, .members_c8ffbb, 
+.panels__71401, .chat__ad572, .content_a7d72e, .base_a7d72e {
+    background: rgba(0, 0, 0, 0.6) !important; /* Makes the text readable over the flag */
+    background-color: transparent !important;
+    backdrop-filter: blur(4px);
 }
 
-/* 2. WATERMARK: StanStyle lang malakas */
-/* This is the only custom element kept */
+/* 3. WATERMARK: StanStyle lang malakas (Yellow Sun) */
 .title_c38106:after, [class*="wordmark_"]::after, [class*="typeWindows_"]::after {
-    content: "StanStyle lang malakas" !important;
+    content: "StanStyle lang malakas ☀️" !important;
     position: absolute !important;
     left: 10px !important;
     top: 5px !important;
-    color: #ffffff !important; /* Set to White for maximum compatibility */
-    font-size: 11px !important; 
-    font-weight: 850 !important;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.4) !important;
+    color: var(--ph-yellow) !important; 
+    font-size: 12px !important; 
+    font-weight: 900 !important;
+    text-shadow: 0 0 10px rgba(252, 209, 22, 0.7) !important;
     z-index: 9999 !important;
     display: block !important;
-    visibility: visible !important;
+}
+[class*="wordmark_"] svg { display: none !important; }
+
+/* 4. UI ACCENTS (Yellow & White) */
+.unread__2ea32, .unreadPill__908e2, .item__58105 {
+    background-color: var(--ph-yellow) !important;
 }
 
-/* Hide the default Discord logo to make room for your text */
-[class*="wordmark_"] svg { 
-    display: none !important; 
+.newMessagesBar__0f481 {
+    background-color: var(--ph-blue) !important;
+    border: 1px solid var(--ph-white);
 }
 
-/* 3. CLEANUP EVERYTHING ELSE */
-/* Removes the cat cursor, mentions overrides, and special UI colors */
-html::after, .bongo-cat, [class*="cursor-"], #cursor, .cursor-follower {
-    display: none !important;
+/* 5. USERNAME VISIBILITY FIX */
+.username_b0513d, .nickname_b0513d, .mention, [class*="mention"] {
+    color: var(--ph-white) !important;
+    text-shadow: 0 0 2px rgba(0,0,0,0.8);
 }
 
-* { 
-    cursor: auto !important; 
-}
-
-/* Hide Nitro/Gift button for a cleaner look */
-button[aria-label="Send a gift"], [href="/store"] {
-    display: none !important;
-}
+/* 6. CLEANUP */
+button[aria-label="Send a gift"], [href="/store"] { display: none !important; }
