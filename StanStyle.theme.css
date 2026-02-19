@@ -1,43 +1,27 @@
 /**
-  * @name StanStyle Sapphire Matrix
+  * @name StanStyle Minimal Blue
   * @author Stan
-  * @version 18.0.0
+  * @version 19.0.0
 */
 
 @import url('https://devevil99.github.io/devevil/BetterDiscordAddons/Theme/Dark+/Dark+.theme.css');
 
 :root {
-  /* Clean Sapphire Palette */
+  /* Clean Sapphire Blue Palette */
   --darkplus-sec: #0088ff !important;           
   --darkplus-links: #77ccff !important;         
-  --matrix-gif: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmR3dnY4YXFndTkzOXFxOTZqN3NreGl3bm1jZWU5Ymhma3ZsYXB5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IvOFcGZeDA76P6XryO/giphy.gif');
+  --darkplus-bg: #0b0c0f !important; /* Deep dark background */
 }
 
-/* 1. THE BACKGROUND - BLUE FORCE */
+/* 1. RESET BACKGROUND (Removes GIF and Filters) */
 #app-mount, .bg__960e4, .layer__960e4, .app_bd26cc {
-    background: var(--matrix-gif) center/cover no-repeat fixed !important;
+    background: var(--darkplus-bg) !important;
+}
+#app-mount::after, #app-mount::before {
+    display: none !important;
 }
 
-/* This fixes the brown tint from your screenshot and makes it Blue */
-#app-mount::after {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 40, 80, 0.2) !important; /* Blue tint */
-    backdrop-filter: hue-rotate(150deg) saturate(200%) brightness(0.7) !important;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* 2. TRANSPARENCY (Cleaning up the "Muddy" panels) */
-.sidebar_e83166, .chatContent_f75fb0, .container_c8ffbb, .members_c8ffbb, 
-.panels__71401, .chat__ad572, .content_a7d72e, .base_a7d72e, .callContainer_af03a5 {
-    background: rgba(0, 0, 0, 0.65) !important;
-    background-color: transparent !important;
-    backdrop-filter: blur(3px);
-}
-
-/* 3. BRANDING: StanStyle lang malakas (Sapphire) */
+/* 2. BRANDING: StanStyle lang malakas (The only thing kept) */
 .title_c38106:after, [class*="wordmark_"]::after, [class*="typeWindows_"]::after {
     content: "StanStyle lang malakas" !important;
     position: absolute !important;
@@ -46,29 +30,28 @@
     color: #0088ff !important; 
     font-size: 11px !important; 
     font-weight: 850 !important;
-    text-shadow: 0 0 8px rgba(0, 136, 255, 0.8) !important;
+    text-shadow: 0 0 8px rgba(0, 136, 255, 0.6) !important;
     z-index: 9999 !important;
+    display: block !important;
 }
+/* Hide the default Discord logo to show your watermark clearly */
 [class*="wordmark_"] svg { display: none !important; }
 
-/* 4. THE BLUE CAT CURSOR */
-html::after {
-    content: "";
-    position: fixed;
-    width: 35px; height: 35px;
-    background: url('https://cur.cursors-4u.net/anime/ani-9/ani850.gif') no-repeat center/contain;
-    pointer-events: none;
-    z-index: 100000;
-    filter: sepia(100%) saturate(500%) hue-rotate(180deg) brightness(1.3) !important;
-    left: var(--mouse-x, 0);
-    top: var(--mouse-y, 0);
-    animation: mouse-tracking 0.1s linear infinite;
-}
-
-/* 5. UI ACCENTS FORCED TO BLUE */
+/* 3. BLUE UI ACCENTS */
 .unread__2ea32, .item__58105, .newMessagesBar__0f481, .unreadPill__908e2, .wrapper__00943 {
     background-color: #0088ff !important;
 }
 .membersGroup_c8ffbb, .headerText__99e7c, .title__9293f, .name__91a9d {
     color: #0088ff !important;
+}
+
+/* 4. CLEANUP (Removing the cat and other elements) */
+html::after, .bongo-cat, [class*="cursor-"], #cursor, .cursor-follower {
+    display: none !important;
+}
+* { cursor: auto !important; }
+
+/* Hide Nitro/Gift button */
+button[aria-label="Send a gift"], [href="/store"] {
+    display: none !important;
 }
