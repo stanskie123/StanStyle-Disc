@@ -1,7 +1,7 @@
 /**
   * @name StanStyle Gold Matrix Final
   * @author Stan
-  * @version 12.0.0
+  * @version 12.1.0
 */
 
 /* 1. IMPORT BASE THEME */
@@ -9,12 +9,12 @@
 
 :root {
   --darkplus-sec: #FFD700;           /* Pure Gold */
-  --darkplus-links: #FFFACD;         /* Lemon Chiffon / Soft Gold */
-  /* Matrix GIF remains the same, but you can swap this URL if you want a golden one! */
-  --matrix-gif: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmR3dnY4YXFndTkzOXFxOTZqN3NreGl3bm1jZWU5Ymhma3ZsYXB5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IvOFcGZeDA76P6XryO/giphy.gif');
+  --darkplus-links: #FFFACD;         /* Soft Gold */
+  /* NEW: Golden Matrix GIF URL */
+  --matrix-gif: url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHJubmY3bmZ6ZzR6bmZ6ZzR6bmZ6ZzR6bmZ6ZzR6bmZ6ZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3o7TKMGpxxS06D0XhS/giphy.gif');
 }
 
-/* 2. BACKGROUND INJECTION */
+/* 2. BACKGROUND INJECTION (Updated for Gold) */
 #app-mount,
 .bg__960e4,
 .layer__960e4,
@@ -23,7 +23,7 @@
     background: var(--matrix-gif) center/cover no-repeat fixed !important;
 }
 
-/* 3. TRANSPARENCY FIX */
+/* 3. TRANSPARENCY FIX (Slightly darker for gold readability) */
 .sidebar_e83166, 
 .chatContent_f75fb0, 
 .container_c8ffbb, 
@@ -36,9 +36,9 @@
 .standardSidebarView__23e6b,
 .scroller__36d07,
 .privateChannels__31232 {
-    background: rgba(0, 0, 0, 0.55) !important; /* Slightly darker for gold contrast */
+    background: rgba(0, 0, 0, 0.6) !important; 
     background-color: transparent !important;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(1.5px);
 }
 
 /* 4. BRANDING: "StanStyle lang malakas" */
@@ -52,21 +52,4 @@
     color: var(--darkplus-sec) !important;
     font-size: 11px !important; 
     font-weight: 850 !important;
-    text-shadow: 0 0 8px rgba(255, 215, 0, 0.6) !important;
-    z-index: 9999 !important;
-    display: block !important;
-    visibility: visible !important;
-}
-/* Hide original Discord logo */
-[class*="wordmark_"] svg { display: none !important; }
-
-/* 5. THE CAT CURSOR (Golden Follower) */
-.bongo-cat, 
-[class*="cursor-"], 
-#cursor, 
-.cursor-follower {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    /* Updated filter to produce a Golden/Yellow tint instead of Green */
-    filter: sepia(1
+    text-shadow: 0
