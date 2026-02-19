@@ -1,5 +1,5 @@
 /**
-  * @name StanStyle Emerald Matrix Final
+  * @name StanStyle Gold Matrix Final
   * @author Stan
   * @version 12.0.0
 */
@@ -8,12 +8,13 @@
 @import url('https://devevil99.github.io/devevil/BetterDiscordAddons/Theme/Dark+/Dark+.theme.css');
 
 :root {
-  --darkplus-sec: #50c878;           /* Emerald Green */
-  --darkplus-links: #a7f3d0;         /* Soft Mint */
+  --darkplus-sec: #FFD700;           /* Pure Gold */
+  --darkplus-links: #FFFACD;         /* Lemon Chiffon / Soft Gold */
+  /* Matrix GIF remains the same, but you can swap this URL if you want a golden one! */
   --matrix-gif: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmR3dnY4YXFndTkzOXFxOTZqN3NreGl3bm1jZWU5Ymhma3ZsYXB5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IvOFcGZeDA76P6XryO/giphy.gif');
 }
 
-/* 2. BACKGROUND INJECTION (Forces GIF on all layers) */
+/* 2. BACKGROUND INJECTION */
 #app-mount,
 .bg__960e4,
 .layer__960e4,
@@ -22,8 +23,7 @@
     background: var(--matrix-gif) center/cover no-repeat fixed !important;
 }
 
-/* 3. TRANSPARENCY FIX (Makes the 'Black Walls' disappear) */
-/* We target every major container to ensure the GIF stays visible after loading */
+/* 3. TRANSPARENCY FIX */
 .sidebar_e83166, 
 .chatContent_f75fb0, 
 .container_c8ffbb, 
@@ -36,7 +36,7 @@
 .standardSidebarView__23e6b,
 .scroller__36d07,
 .privateChannels__31232 {
-    background: rgba(0, 0, 0, 0.45) !important; /* Semi-transparent tint for readability */
+    background: rgba(0, 0, 0, 0.55) !important; /* Slightly darker for gold contrast */
     background-color: transparent !important;
     backdrop-filter: blur(2px);
 }
@@ -52,7 +52,7 @@
     color: var(--darkplus-sec) !important;
     font-size: 11px !important; 
     font-weight: 850 !important;
-    text-shadow: 0 0 8px rgba(80, 200, 120, 0.8) !important;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.6) !important;
     z-index: 9999 !important;
     display: block !important;
     visibility: visible !important;
@@ -60,7 +60,7 @@
 /* Hide original Discord logo */
 [class*="wordmark_"] svg { display: none !important; }
 
-/* 5. THE CAT CURSOR (Emerald Follower) */
+/* 5. THE CAT CURSOR (Golden Follower) */
 .bongo-cat, 
 [class*="cursor-"], 
 #cursor, 
@@ -68,27 +68,5 @@
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
-    /* This filter makes the cat Emerald Green to match the theme */
-    filter: sepia(100%) saturate(300%) hue-rotate(90deg) !important;
-}
-
-/* 6. EMERALD UI ACCENTS */
-.unread__2ea32, 
-.item__58105, 
-.newMessagesBar__0f481, 
-.unreadPill__908e2, 
-.wrapper__00943 {
-    background-color: var(--darkplus-sec) !important;
-}
-
-.membersGroup_c8ffbb, 
-.headerText__99e7c, 
-.title__9293f, 
-.name__91a9d {
-    color: var(--darkplus-sec) !important;
-}
-
-/* 7. CLEANUP: Hide Nitro/Gift button */
-button[aria-label="Send a gift"], [href="/store"] {
-    display: none !important;
-}
+    /* Updated filter to produce a Golden/Yellow tint instead of Green */
+    filter: sepia(1
