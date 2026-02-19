@@ -1,37 +1,20 @@
 /**
-  * @name StanStyle Pure Matrix
+  * @name StanStyle Minimal Blue
   * @author Stan
-  * @version 23.0.0
+  * @version 24.0.0
 */
 
-:root {
-  --matrix-gif: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmR3dnY4YXFndTkzOXFxOTZqN3NreGl3bm1jZWU5Ymhma3ZsYXB5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IvOFcGZeDA76P6XryO/giphy.gif');
-}
-
-/* 1. THE BACKGROUND GIF */
+/* 1. RESET ALL BACKGROUNDS (No GIF, No Matrix) */
 #app-mount, .bg__960e4, .layer__960e4, .app_bd26cc {
-    background: var(--matrix-gif) center/cover no-repeat fixed !important;
+    background: transparent !important;
 }
 
-/* 2. THE BLUE TINT (Flips the green GIF to blue) */
-#app-mount::after {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 40, 80, 0.2) !important;
-    backdrop-filter: hue-rotate(150deg) saturate(200%) brightness(0.8) !important;
-    pointer-events: none;
-    z-index: 0;
+/* Remove the blue matrix filter completely */
+#app-mount::after, #app-mount::before {
+    display: none !important;
 }
 
-/* 3. TRANSPARENCY (Makes Discord see-through) */
-.sidebar_e83166, .chatContent_f75fb0, .container_c8ffbb, .members_c8ffbb, 
-.panels__71401, .chat__ad572, .content_a7d72e, .base_a7d72e, .container__2637a {
-    background: rgba(0, 0, 0, 0.45) !important; /* Adjust this 0.45 if you want it darker or lighter */
-    background-color: transparent !important;
-}
-
-/* 4. WATERMARK: StanStyle lang malakas */
+/* 2. WATERMARK: StanStyle lang malakas */
 .title_c38106:after, [class*="wordmark_"]::after, [class*="typeWindows_"]::after {
     content: "StanStyle lang malakas" !important;
     position: absolute !important;
@@ -44,10 +27,32 @@
     z-index: 9999 !important;
     display: block !important;
 }
+/* Hide default Discord logo */
 [class*="wordmark_"] svg { display: none !important; }
 
-/* 5. FIX TEXT (White text for clarity) */
-.username_b0513d, .nickname_b0513d, .mention, [class*="mention"] {
+/* 3. BLUE UI ACCENTS (Keeps the Blue vibe) */
+.unread__2ea32, 
+.item__58105, 
+.newMessagesBar__0f481, 
+.unreadPill__908e2, 
+.wrapper__00943 {
+    background-color: #0088ff !important;
+}
+
+/* 4. FIX MENTIONS & TEXT */
+/* This ensures everything is readable on the standard dark background */
+.mention, [class*="mention"] {
     color: #ffffff !important;
-    text-shadow: 0 0 3px rgba(0,0,0,0.5);
+    background-color: rgba(0, 136, 255, 0.3) !important;
+}
+
+/* 5. CLEANUP */
+html::after, .bongo-cat, [class*="cursor-"], #cursor, .cursor-follower {
+    display: none !important;
+}
+* { cursor: auto !important; }
+
+/* Hide Nitro/Gift button */
+button[aria-label="Send a gift"], [href="/store"] {
+    display: none !important;
 }
