@@ -1,32 +1,30 @@
 /**
-  * @name StanStyle Philippines Flag Edition
+  * @name StanStyle Pinoy Flag Pure
   * @author Stan
-  * @version 26.0.0
+  * @version 27.0.0
 */
 
+/* REMOVING ALL GIFS AND EXTERNAL THEMES */
 :root {
-  /* The Colors of the Flag */
   --ph-blue: #0038a8;
   --ph-red: #ce1126;
   --ph-yellow: #fcd116;
-  --ph-white: #ffffff;
 }
 
-/* 1. THE FLAG GRADIENT BACKGROUND */
+/* 1. THE FLAG GRADIENT (No GIF allowed) */
 #app-mount, .bg__960e4, .layer__960e4, .app_bd26cc {
-    background: linear-gradient(135deg, var(--ph-blue) 0%, var(--ph-blue) 45%, var(--ph-white) 48%, var(--ph-white) 52%, var(--ph-red) 55%, var(--ph-red) 100%) !important;
-    background-attachment: fixed !important;
+    background: linear-gradient(180deg, var(--ph-blue) 0%, var(--ph-blue) 49%, #ffffff 50%, var(--ph-red) 51%, var(--ph-red) 100%) !important;
+    background-image: none !important; /* Forces any previous image to die */
 }
 
-/* 2. TRANSPARENCY (Glass Look) */
+/* 2. TRANSPARENCY */
 .sidebar_e83166, .chatContent_f75fb0, .container_c8ffbb, .members_c8ffbb, 
 .panels__71401, .chat__ad572, .content_a7d72e, .base_a7d72e {
-    background: rgba(0, 0, 0, 0.6) !important; /* Makes the text readable over the flag */
+    background: rgba(0, 0, 0, 0.6) !important;
     background-color: transparent !important;
-    backdrop-filter: blur(4px);
 }
 
-/* 3. WATERMARK: StanStyle lang malakas (Yellow Sun) */
+/* 3. WATERMARK: StanStyle lang malakas */
 .title_c38106:after, [class*="wordmark_"]::after, [class*="typeWindows_"]::after {
     content: "StanStyle lang malakas ☀️" !important;
     position: absolute !important;
@@ -35,27 +33,12 @@
     color: var(--ph-yellow) !important; 
     font-size: 12px !important; 
     font-weight: 900 !important;
-    text-shadow: 0 0 10px rgba(252, 209, 22, 0.7) !important;
+    text-shadow: 0 0 10px rgba(252, 209, 22, 0.8) !important;
     z-index: 9999 !important;
-    display: block !important;
 }
 [class*="wordmark_"] svg { display: none !important; }
 
-/* 4. UI ACCENTS (Yellow & White) */
-.unread__2ea32, .unreadPill__908e2, .item__58105 {
-    background-color: var(--ph-yellow) !important;
-}
-
-.newMessagesBar__0f481 {
-    background-color: var(--ph-blue) !important;
-    border: 1px solid var(--ph-white);
-}
-
-/* 5. USERNAME VISIBILITY FIX */
+/* 4. FIX TEXT COLOR */
 .username_b0513d, .nickname_b0513d, .mention, [class*="mention"] {
-    color: var(--ph-white) !important;
-    text-shadow: 0 0 2px rgba(0,0,0,0.8);
+    color: #ffffff !important;
 }
-
-/* 6. CLEANUP */
-button[aria-label="Send a gift"], [href="/store"] { display: none !important; }
