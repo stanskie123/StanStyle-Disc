@@ -1,22 +1,19 @@
 /**
   * @name StanStyle Pure Matrix
   * @author Stan
-  * @version 22.0.0
+  * @version 23.0.0
 */
 
-@import url('https://devevil99.github.io/devevil/BetterDiscordAddons/Theme/Dark+/Dark+.theme.css');
-
 :root {
-  --darkplus-sec: #0088ff !important;
   --matrix-gif: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmR3dnY4YXFndTkzOXFxOTZqN3NreGl3bm1jZWU5Ymhma3ZsYXB5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IvOFcGZeDA76P6XryO/giphy.gif');
 }
 
-/* 1. THE BACKGROUND GIF (Forced Blue) */
+/* 1. THE BACKGROUND GIF */
 #app-mount, .bg__960e4, .layer__960e4, .app_bd26cc {
     background: var(--matrix-gif) center/cover no-repeat fixed !important;
 }
 
-/* Blue tint filter for the Matrix */
+/* 2. THE BLUE TINT (Flips the green GIF to blue) */
 #app-mount::after {
     content: "";
     position: fixed;
@@ -27,14 +24,14 @@
     z-index: 0;
 }
 
-/* 2. TRANSPARENCY (Makes everything clear so the GIF shows) */
+/* 3. TRANSPARENCY (Makes Discord see-through) */
 .sidebar_e83166, .chatContent_f75fb0, .container_c8ffbb, .members_c8ffbb, 
-.panels__71401, .chat__ad572, .content_a7d72e, .base_a7d72e {
-    background: rgba(0, 0, 0, 0.4) !important;
+.panels__71401, .chat__ad572, .content_a7d72e, .base_a7d72e, .container__2637a {
+    background: rgba(0, 0, 0, 0.45) !important; /* Adjust this 0.45 if you want it darker or lighter */
     background-color: transparent !important;
 }
 
-/* 3. WATERMARK: StanStyle lang malakas */
+/* 4. WATERMARK: StanStyle lang malakas */
 .title_c38106:after, [class*="wordmark_"]::after, [class*="typeWindows_"]::after {
     content: "StanStyle lang malakas" !important;
     position: absolute !important;
@@ -49,13 +46,8 @@
 }
 [class*="wordmark_"] svg { display: none !important; }
 
-/* 4. REMOVE EVERYTHING ELSE (No Cat, No Accents) */
-html::after, .bongo-cat, [class*="cursor-"], #cursor, .cursor-follower {
-    display: none !important;
-}
-* { cursor: auto !important; }
-
-/* Keep Mention Text Visible (Fixes the blank bars) */
-.mention, [class*="mention"] {
+/* 5. FIX TEXT (White text for clarity) */
+.username_b0513d, .nickname_b0513d, .mention, [class*="mention"] {
     color: #ffffff !important;
+    text-shadow: 0 0 3px rgba(0,0,0,0.5);
 }
