@@ -1,89 +1,84 @@
 /**
-  * @name StanStyle Emerald Matrix Final
+  * @name StanStyle Sapphire Minimal
   * @author Stan
-  * @version 10.0.0
+  * @version 20.0.0
 */
 
 @import url('https://devevil99.github.io/devevil/BetterDiscordAddons/Theme/Dark+/Dark+.theme.css');
 
 :root {
-  --darkplus-bg: transparent !important;
-  --darkplus-bg2: rgba(0, 0, 0, 0.3) !important; 
-  --darkplus-sec: #50c878;           /* Emerald Green */
-  --darkplus-links: #a7f3d0;         /* Soft Mint */
-  --matrix-gif: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmR3dnY4YXFndTkzOXFxOTZqN3NreGl3bm1jZWU5Ymhma3ZsYXB5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IvOFcGZeDA76P6XryO/giphy.gif');
+  /* Sapphire Blue Palette */
+  --darkplus-sec: #0088ff !important;           
+  --darkplus-links: #77ccff !important;         
+  --darkplus-bg: #0b0c0f !important; 
 }
 
-/* 1. THE BACKGROUND: Matrix GIF on all layers */
-#app-mount,
-.bg__960e4,
-.layer__960e4,
-.container_a2f514 {
-    background: var(--matrix-gif) center/cover no-repeat fixed !important;
+/* 1. CLEAN BACKGROUND */
+#app-mount, .bg__960e4, .layer__960e4, .app_bd26cc {
+    background: var(--darkplus-bg) !important;
 }
 
-/* 2. TRANSPARENCY: Making sure the GIF shows through the panels */
-.sidebar_e83166, 
-.chatContent_f75fb0, 
-.container_c8ffbb, 
-.members_c8ffbb,
-.panels__71401,
-.container__2637a,
-.chat__ad572,
-.content_a7d72e,
-.base_a7d72e,
-.standardSidebarView__23e6b {
-    background: rgba(0, 0, 0, 0.45) !important; /* Semi-transparent black tint */
-    background-color: transparent !important;
-    backdrop-filter: blur(2px);
+/* 2. FIX HIDDEN NAMES & TEXT (High Contrast) */
+/* This ensures names are no longer 'blocks' or invisible */
+.username_b0513d, 
+.nickname_b0513d, 
+[class*="username_"],
+[class*="nickname_"],
+.headerText_c8ffbb {
+    color: #ffffff !important; /* Pure white for chat names */
+    opacity: 1 !important;
+    filter: none !important;
+    visibility: visible !important;
 }
 
-/* 3. BRANDING: "StanStyle lang malakas" */
-.title_c38106:after, 
-[class*="wordmark_"]::after,
-[class*="typeWindows_"]::after {
+/* Member List names */
+.name_c8ffbb, 
+.membersGroup_c8ffbb {
+    color: #0088ff !important; /* Bright blue for member list */
+    opacity: 1 !important;
+}
+
+/* Chat Message Text */
+.messageContent_v38106, .markup_v38106 {
+    color: #dcddde !important;
+    opacity: 1 !important;
+}
+
+/* 3. WATERMARK: StanStyle lang malakas */
+.title_c38106:after, [class*="wordmark_"]::after, [class*="typeWindows_"]::after {
     content: "StanStyle lang malakas" !important;
     position: absolute !important;
     left: 10px !important;
     top: 5px !important;
-    color: var(--darkplus-sec) !important;
+    color: #0088ff !important; 
     font-size: 11px !important; 
     font-weight: 850 !important;
-    text-shadow: 0 0 8px rgba(80, 200, 120, 0.8) !important;
+    text-shadow: 0 0 8px rgba(0, 136, 255, 0.6) !important;
     z-index: 9999 !important;
     display: block !important;
 }
+/* Hide default Discord logo */
 [class*="wordmark_"] svg { display: none !important; }
 
-/* 4. THE CAT CURSOR: Emerald Follower */
-/* This enables the cat image and tints it Emerald to match */
-.bongo-cat, 
-[class*="cursor-"], 
-#cursor, 
-.cursor-follower {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    filter: sepia(100%) saturate(300%) hue-rotate(90deg) !important; /* Makes the cat Green */
-}
-
-/* 5. UI EMERALD ACCENTS */
+/* 4. BLUE UI ACCENTS */
 .unread__2ea32, 
 .item__58105, 
 .newMessagesBar__0f481, 
 .unreadPill__908e2, 
 .wrapper__00943 {
-    background-color: var(--darkplus-sec) !important;
+    background-color: #0088ff !important;
 }
 
-.membersGroup_c8ffbb, 
-.headerText__99e7c, 
-.title__9293f, 
-.name__91a9d {
-    color: var(--darkplus-sec) !important;
+/* 5. REMOVE EXTRA STUFF (Cats, GIFs, Nitro) */
+html::after, .bongo-cat, [class*="cursor-"], #cursor, .cursor-follower {
+    display: none !important;
 }
-
-/* Hide Gifts/Nitro */
+* { cursor: auto !important; }
 button[aria-label="Send a gift"], [href="/store"] {
+    display: none !important;
+}
+
+/* Remove any leftover muddy filters */
+#app-mount::after, #app-mount::before {
     display: none !important;
 }
