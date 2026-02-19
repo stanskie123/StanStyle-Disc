@@ -1,58 +1,51 @@
 /**
-  * @name StanStyle Minimal Blue
+  * @name StanStyle Minimal Branding
   * @author Stan
-  * @version 24.0.0
+  * @version 25.0.0
 */
 
-/* 1. RESET ALL BACKGROUNDS (No GIF, No Matrix) */
+/* 1. RESET ALL THEME OVERRIDES */
 #app-mount, .bg__960e4, .layer__960e4, .app_bd26cc {
     background: transparent !important;
 }
 
-/* Remove the blue matrix filter completely */
+/* Kill all filters, GIFs, and background layers */
 #app-mount::after, #app-mount::before {
     display: none !important;
 }
 
 /* 2. WATERMARK: StanStyle lang malakas */
+/* This is the only custom element kept */
 .title_c38106:after, [class*="wordmark_"]::after, [class*="typeWindows_"]::after {
     content: "StanStyle lang malakas" !important;
     position: absolute !important;
     left: 10px !important;
     top: 5px !important;
-    color: #0088ff !important; 
+    color: #ffffff !important; /* Set to White for maximum compatibility */
     font-size: 11px !important; 
     font-weight: 850 !important;
-    text-shadow: 0 0 8px rgba(0, 136, 255, 0.8) !important;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.4) !important;
     z-index: 9999 !important;
     display: block !important;
-}
-/* Hide default Discord logo */
-[class*="wordmark_"] svg { display: none !important; }
-
-/* 3. BLUE UI ACCENTS (Keeps the Blue vibe) */
-.unread__2ea32, 
-.item__58105, 
-.newMessagesBar__0f481, 
-.unreadPill__908e2, 
-.wrapper__00943 {
-    background-color: #0088ff !important;
+    visibility: visible !important;
 }
 
-/* 4. FIX MENTIONS & TEXT */
-/* This ensures everything is readable on the standard dark background */
-.mention, [class*="mention"] {
-    color: #ffffff !important;
-    background-color: rgba(0, 136, 255, 0.3) !important;
+/* Hide the default Discord logo to make room for your text */
+[class*="wordmark_"] svg { 
+    display: none !important; 
 }
 
-/* 5. CLEANUP */
+/* 3. CLEANUP EVERYTHING ELSE */
+/* Removes the cat cursor, mentions overrides, and special UI colors */
 html::after, .bongo-cat, [class*="cursor-"], #cursor, .cursor-follower {
     display: none !important;
 }
-* { cursor: auto !important; }
 
-/* Hide Nitro/Gift button */
+* { 
+    cursor: auto !important; 
+}
+
+/* Hide Nitro/Gift button for a cleaner look */
 button[aria-label="Send a gift"], [href="/store"] {
     display: none !important;
 }
