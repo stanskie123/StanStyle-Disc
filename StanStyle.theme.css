@@ -1,41 +1,40 @@
 /**
-  * @name StanStyle Visible Sapphire
+  * @name StanStyle Pure Matrix
   * @author Stan
-  * @version 21.0.0
+  * @version 22.0.0
 */
 
 @import url('https://devevil99.github.io/devevil/BetterDiscordAddons/Theme/Dark+/Dark+.theme.css');
 
 :root {
-  --darkplus-sec: #0088ff !important;           
-  --darkplus-links: #77ccff !important;         
-  --darkplus-bg: #0b0c0f !important; 
+  --darkplus-sec: #0088ff !important;
+  --matrix-gif: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmR3dnY4YXFndTkzOXFxOTZqN3NreGl3bm1jZWU5Ymhma3ZsYXB5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IvOFcGZeDA76P6XryO/giphy.gif');
 }
 
-/* 1. CLEAN BACKGROUND */
+/* 1. THE BACKGROUND GIF (Forced Blue) */
 #app-mount, .bg__960e4, .layer__960e4, .app_bd26cc {
-    background: var(--darkplus-bg) !important;
+    background: var(--matrix-gif) center/cover no-repeat fixed !important;
 }
 
-/* 2. THE MENTION FIX (No more blank bars) */
-/* This forces mention text to be White so it stands out against the Blue/Green/Pink pills */
-.mention, 
-.mention.wrapper__0a200, 
-.interactive, 
-[class*="mention"] {
-    color: #ffffff !important; 
-    font-weight: 700 !important;
-    opacity: 1 !important;
+/* Blue tint filter for the Matrix */
+#app-mount::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 40, 80, 0.2) !important;
+    backdrop-filter: hue-rotate(150deg) saturate(200%) brightness(0.8) !important;
+    pointer-events: none;
+    z-index: 0;
 }
 
-/* 3. USERNAME & TEXT VISIBILITY */
-.username_b0513d, .nickname_b0513d, [class*="username_"], [class*="nickname_"] {
-    color: #ffffff !important;
-    opacity: 1 !important;
-    filter: none !important;
+/* 2. TRANSPARENCY (Makes everything clear so the GIF shows) */
+.sidebar_e83166, .chatContent_f75fb0, .container_c8ffbb, .members_c8ffbb, 
+.panels__71401, .chat__ad572, .content_a7d72e, .base_a7d72e {
+    background: rgba(0, 0, 0, 0.4) !important;
+    background-color: transparent !important;
 }
 
-/* 4. WATERMARK: StanStyle lang malakas */
+/* 3. WATERMARK: StanStyle lang malakas */
 .title_c38106:after, [class*="wordmark_"]::after, [class*="typeWindows_"]::after {
     content: "StanStyle lang malakas" !important;
     position: absolute !important;
@@ -44,21 +43,19 @@
     color: #0088ff !important; 
     font-size: 11px !important; 
     font-weight: 850 !important;
-    text-shadow: 0 0 8px rgba(0, 136, 255, 0.6) !important;
+    text-shadow: 0 0 8px rgba(0, 136, 255, 0.8) !important;
     z-index: 9999 !important;
     display: block !important;
 }
 [class*="wordmark_"] svg { display: none !important; }
 
-/* 5. UI ACCENTS */
-.unread__2ea32, .item__58105, .newMessagesBar__0f481, .unreadPill__908e2, .wrapper__00943 {
-    background-color: #0088ff !important;
-}
-
-/* 6. CLEANUP */
+/* 4. REMOVE EVERYTHING ELSE (No Cat, No Accents) */
 html::after, .bongo-cat, [class*="cursor-"], #cursor, .cursor-follower {
     display: none !important;
 }
-button[aria-label="Send a gift"], [href="/store"] {
-    display: none !important;
+* { cursor: auto !important; }
+
+/* Keep Mention Text Visible (Fixes the blank bars) */
+.mention, [class*="mention"] {
+    color: #ffffff !important;
 }
