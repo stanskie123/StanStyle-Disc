@@ -1,13 +1,12 @@
 /**
-  * @name StanStyle Sapphire Minimal
+  * @name StanStyle Visible Sapphire
   * @author Stan
-  * @version 20.0.0
+  * @version 21.0.0
 */
 
 @import url('https://devevil99.github.io/devevil/BetterDiscordAddons/Theme/Dark+/Dark+.theme.css');
 
 :root {
-  /* Sapphire Blue Palette */
   --darkplus-sec: #0088ff !important;           
   --darkplus-links: #77ccff !important;         
   --darkplus-bg: #0b0c0f !important; 
@@ -18,33 +17,25 @@
     background: var(--darkplus-bg) !important;
 }
 
-/* 2. FIX HIDDEN NAMES & TEXT (High Contrast) */
-/* This ensures names are no longer 'blocks' or invisible */
-.username_b0513d, 
-.nickname_b0513d, 
-[class*="username_"],
-[class*="nickname_"],
-.headerText_c8ffbb {
-    color: #ffffff !important; /* Pure white for chat names */
+/* 2. THE MENTION FIX (No more blank bars) */
+/* This forces mention text to be White so it stands out against the Blue/Green/Pink pills */
+.mention, 
+.mention.wrapper__0a200, 
+.interactive, 
+[class*="mention"] {
+    color: #ffffff !important; 
+    font-weight: 700 !important;
+    opacity: 1 !important;
+}
+
+/* 3. USERNAME & TEXT VISIBILITY */
+.username_b0513d, .nickname_b0513d, [class*="username_"], [class*="nickname_"] {
+    color: #ffffff !important;
     opacity: 1 !important;
     filter: none !important;
-    visibility: visible !important;
 }
 
-/* Member List names */
-.name_c8ffbb, 
-.membersGroup_c8ffbb {
-    color: #0088ff !important; /* Bright blue for member list */
-    opacity: 1 !important;
-}
-
-/* Chat Message Text */
-.messageContent_v38106, .markup_v38106 {
-    color: #dcddde !important;
-    opacity: 1 !important;
-}
-
-/* 3. WATERMARK: StanStyle lang malakas */
+/* 4. WATERMARK: StanStyle lang malakas */
 .title_c38106:after, [class*="wordmark_"]::after, [class*="typeWindows_"]::after {
     content: "StanStyle lang malakas" !important;
     position: absolute !important;
@@ -57,28 +48,17 @@
     z-index: 9999 !important;
     display: block !important;
 }
-/* Hide default Discord logo */
 [class*="wordmark_"] svg { display: none !important; }
 
-/* 4. BLUE UI ACCENTS */
-.unread__2ea32, 
-.item__58105, 
-.newMessagesBar__0f481, 
-.unreadPill__908e2, 
-.wrapper__00943 {
+/* 5. UI ACCENTS */
+.unread__2ea32, .item__58105, .newMessagesBar__0f481, .unreadPill__908e2, .wrapper__00943 {
     background-color: #0088ff !important;
 }
 
-/* 5. REMOVE EXTRA STUFF (Cats, GIFs, Nitro) */
+/* 6. CLEANUP */
 html::after, .bongo-cat, [class*="cursor-"], #cursor, .cursor-follower {
     display: none !important;
 }
-* { cursor: auto !important; }
 button[aria-label="Send a gift"], [href="/store"] {
-    display: none !important;
-}
-
-/* Remove any leftover muddy filters */
-#app-mount::after, #app-mount::before {
     display: none !important;
 }
